@@ -5,15 +5,16 @@ import { useEffect, useState } from "react";
 
 
 const api="https://api.unsplash.com/search/photos";
-const accessKey = 'vY-xH2PzSBiDrSxluUQgQFuQK22T5nB4AJamQ7Yu4Ws';
-// const accessId=process.env.REACT_APP_UNSPLASH_ACCESS;
-console.log(api,accessKey);
+// const accessKey = 'vY-xH2PzSBiDrSxluUQgQFuQK22T5nB4AJamQ7Yu4Ws';
+const accessId=process.env.REACT_APP_UNSPLASH_ACCESS;
+console.log(api,accessId);
 export default function AlbumLayout() {
     const [list,setList]=useState([]);
         useEffect(()=>{
         // console.log(1); 
         (async()=>{
-            const response=await axios.get(`${api}?client_id=${accessKey}&query=animal`);
+            const response=await axios.get(`${api}?client_id=${accessId}&query=animal`);
+            console.log(response);
             const {results}=response.data;
             console.log(results);
             setList(results);
