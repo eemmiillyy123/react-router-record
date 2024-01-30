@@ -1,9 +1,14 @@
 import {Routes,Route  } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import About from "./pages/About";
+// import Home from "./pages/Home";
+// import About from "./pages/About";
+import {Home,About,NotFound} from './pages';// index可以省略
 import AlbumLayout from "./pages/AlbumLayout";
 import AlbumIndex from "./pages/AlbumIndex";
+import AlbumPhoto from "./pages/AlbumPhoto";
+import AlbumSearch from "./pages/AlbumSearch";
+// import NotFound from "./pages/NotFound";
+
 function App() {
   return (
     <div className="App">
@@ -20,7 +25,11 @@ function App() {
               {/* <Route path="index" element={<AlbumIndex/>}></Route> */}
               {/* 代表子路由預設呈現的元件 */}
               <Route index element={<AlbumIndex/>}></Route>
+              <Route path="search" element={<AlbumSearch/>}></Route>
+              <Route path=":id" element={<AlbumPhoto/>}></Route>
             </Route>
+            {/* *代表所有的路徑 當上方路徑都沒有可以配對的就會使用這個路由*/}
+            <Route path="*" element={<NotFound/>}></Route>
           </Routes>
       </div>
     </div>
